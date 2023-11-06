@@ -1,0 +1,334 @@
+What is Recursion?
+The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function. Using a recursive algorithm, certain problems can be solved quite easily. Examples of such problems are Towers of Hanoi (TOH), Inorder/Preorder/Postorder Tree Traversals, DFS of Graph, etc. A recursive function solves a particular problem by calling a copy of itself and solving smaller subproblems of the original problems. Many more recursive calls can be generated as and when required. It is essential to know that we should provide a certain case in order to terminate this recursion process. So we can say that every time the function calls itself with a simpler version of the original problem.
+
+Need of Recursion
+
+Recursion is an amazing technique with the help of which we can reduce the length of our code and make it easier to read and write. It has certain advantages over the iteration technique which will be discussed later. A task that can be defined with its similar subtask, recursion is one of the best solutions for it. For example; The Factorial of a number.
+
+Properties of Recursion:
+
+Performing the same operations multiple times with different inputs.
+In every step, we try smaller inputs to make the problem smaller.
+Base condition is needed to stop the recursion otherwise infinite loop will occur.
+
+The Fibonacci Algorithm is a simple numerical series where each number is the sum of the two preceding numbers, starting from 0 and 1. In mathematical terms, the sequence F: F(0)=0, F(1)=1, and for n > 1, F(n) = F(n-1) + F(n-2).
+
+A fascinating trait of the Fibonacci series is its omnipresence in natural phenomena, from the arrangement of leaves on a stem to the design of a snail's shell. The important terms when working with this algorithm in Computer Science are:
+base cases: These are the starting points of the sequence, F(0) and F(1).
+recursive case: This generates the rest of the series using the formula F(n) = F(n-1) + F(n-2).
+
+It's also crucial to understand how this algorithm can be implemented using programming. Here's a simple implementation in Python:
+def fibonacci(n):
+if n <= 1:
+return n
+else:
+return(fibonacci(n-1) + fibonacci(n-2))
+
+This is where the significance of dynamic programming comes into play. Dynamic programming is a technique used to optimize recursive algorithms by storing the results of computation and reusing them when needed, reducing the time complexity significantly. Let's modify the earlier Python code to include dynamic programming:
+def fibonacci(n):
+fib = [0,1] + [0]\*(n-1)
+for i in range(2, n+1):
+fib[i] = fib[i-1] + fib[i-2]
+return fib[n]
+This code creates an array 'fib' and stores computed Fibonacci numbers, thus avoiding unnecessary computation.
+
+Here's a table comparing these two implementations:
+Recursive Algorithm O 2^n , O n
+Dynamic Programming O n, O n
+
+---
+
+Huffman coding is a lossless data compression algorithm. The idea is to assign variable-length codes to input characters, lengths of the assigned codes are based on the frequencies of corresponding characters.
+The variable-length codes assigned to input characters are Prefix Codes, means the codes (bit sequences) are assigned in such a way that the code assigned to one character is not the prefix of code assigned to any other character. This is how Huffman Coding makes sure that there is no ambiguity when decoding the generated bitstream.
+Let us understand prefix codes with a counter example. Let there be four characters a, b, c and d, and their corresponding variable length codes be 00, 01, 0 and 1. This coding leads to ambiguity because code assigned to c is the prefix of codes assigned to a and b. If the compressed bit stream is 0001, the de-compressed output may be “cccd” or “ccb” or “acd” or “ab”.
+See this for applications of Huffman Coding.
+There are mainly two major parts in Huffman Coding
+
+Build a Huffman Tree from input characters.
+Traverse the Huffman Tree and assign codes to characters.
+Algorithm:
+The method which is used to construct optimal prefix code is called Huffman coding.
+
+This algorithm builds a tree in bottom up manner. We can denote this tree by T
+
+Let, |c| be number of leaves
+
+|c| -1 are number of operations required to merge the nodes. Q be the priority queue which can be used while constructing binary heap.
+
+Algorithm Huffman (c)
+{
+n= |c|
+
+Q = c
+for i<-1 to n-1
+
+do
+{
+
+       temp <- get node ()
+
+      left (temp] Get_min (Q) right [temp] Get Min (Q)
+
+      a = left [templ b = right [temp]
+
+      F [temp]<- f[a] + [b]
+
+      insert (Q, temp)
+
+    }
+
+return Get_min (0)
+}
+
+Steps to build Huffman Tree
+Input is an array of unique characters along with their frequency of occurrences and output is Huffman Tree.
+
+Create a leaf node for each unique character and build a min heap of all leaf nodes (Min Heap is used as a priority queue. The value of frequency field is used to compare two nodes in min heap. Initially, the least frequent character is at root)
+Extract two nodes with the minimum frequency from the min heap.
+
+Create a new internal node with a frequency equal to the sum of the two nodes frequencies. Make the first extracted node as its left child and the other extracted node as its right child. Add this node to the min heap.
+Repeat steps#2 and #3 until the heap contains only one node. The remaining node is the root node and the tree is complete.
+Let us understand the algorithm with an example:
+character Frequency
+a 5
+b 9
+c 12
+d 13
+e 16
+f 45
+
+Step 1. Build a min heap that contains 6 nodes where each node represents root of a tree with single node.
+Step 2 Extract two minimum frequency nodes from min heap. Add a new internal node with frequency 5 + 9 = 14.
+
+Now min heap contains 5 nodes where 4 nodes are roots of trees with single element each, and one heap node is root of tree with 3 elements
+
+character Frequency
+c 12
+d 13
+Internal Node 14
+e 16
+f 45
+
+Step 3: Extract two minimum frequency nodes from heap. Add a new internal node with frequency 12 + 13 = 25
+
+Now min heap contains 4 nodes where 2 nodes are roots of trees with single element each, and two heap nodes are root of tree with more than one nodes
+
+character Frequency
+Internal Node 14
+e 16
+Internal Node 25
+f 45
+Step 4: Extract two minimum frequency nodes. Add a new internal node with frequency 14 + 16 = 30
+
+Now min heap contains 3 nodes.
+
+character Frequency
+Internal Node 25
+Internal Node 30
+f 45
+Step 5: Extract two minimum frequency nodes. Add a new internal node with frequency 25 + 30 = 55
+
+Now min heap contains 2 nodes.
+
+character Frequency
+f 45
+Internal Node 55
+Step 6: Extract two minimum frequency nodes. Add a new internal node with frequency 45 + 55 = 100Now min heap contains only one node.
+
+character Frequency
+Internal Node 100
+Since the heap contains only one node, the algorithm stops here.
+
+Steps to print codes from Huffman Tree:
+Traverse the tree formed starting from the root. Maintain an auxiliary array. While moving to the left child, write 0 to the array. While moving to the right child, write 1 to the array. Print the array when a leaf node is encountered.
+
+The codes are as follows:
+
+character code-word
+f 0
+c 100
+d 101
+a 1100
+b 1101
+e 111
+
+So, the overall time complexity of the Huffman algorithm is the sum of the above steps, which is O(n + n log n + n) = O(n log n) . Space Complexity: The algorithm needs to store the frequency table and the Huffman tree, both have 'n' elements in the worst case so the space complexity of the Huffman algorithm is O(n) .
+
+=======================================================================================
+Given the weights and profits of N items, in the form of {profit, weight} put these items in a knapsack of capacity W to get the maximum total profit in the knapsack. In Fractional Knapsack, we can break items for maximizing the total value of the knapsack.
+
+Input: arr[] = {{60, 10}, {100, 20}, {120, 30}}, W = 50
+Output: 240
+Explanation: By taking items of weight 10 and 20 kg and 2/3 fraction of 30 kg.
+Hence total price will be 60+100+(2/3)(120) = 240
+
+Input: arr[] = {{500, 30}}, W = 10
+Output: 166.667
+
+Naive Approach: To solve the problem follow the below idea
+
+Try all possible subsets with all different fractions.
+
+Time Complexity: O(2N)
+Auxiliary Space: O(N)
+
+Fractional Knapsack Problem using Greedy algorithm:
+An efficient solution is to use the Greedy approach.
+
+The basic idea of the greedy approach is to calculate the ratio profit/weight for each item and sort the item on the basis of this ratio. Then take the item with the highest ratio and add them as much as we can (can be the whole element or a fraction of it).
+
+This will always give the maximum profit because, in each step it adds an element such that this is the maximum possible profit for that much weight.
+
+Illustration:
+
+Check the below illustration for a better understanding:
+
+Consider the example: arr[] = {{100, 20}, {60, 10}, {120, 30}}, W = 50.
+
+Sorting: Initially sort the array based on the profit/weight ratio. The sorted array will be {{60, 10}, {100, 20}, {120, 30}}.
+
+Iteration:
+
+For i = 0, weight = 10 which is less than W. So add this element in the knapsack. profit = 60 and remaining W = 50 – 10 = 40.
+For i = 1, weight = 20 which is less than W. So add this element too. profit = 60 + 100 = 160 and remaining W = 40 – 20 = 20.
+For i = 2, weight = 30 is greater than W. So add 20/30 fraction = 2/3 fraction of the element. Therefore profit = 2/3 \* 120 + 160 = 80 + 160 = 240 and remaining W becomes 0.
+So the final profit becomes 240 for W = 50.
+
+Follow the given steps to solve the problem using the above approach:
+
+Calculate the ratio (profit/weight) for each item.
+Sort all the items in decreasing order of the ratio.
+Initialize res = 0, curr_cap = given_cap.
+Do the following for every item i in the sorted order:
+If the weight of the current item is less than or equal to the remaining capacity then add the value of that item into the result
+Else add the current item as much as we can and break out of the loop.
+Return res.
+Below is the implementation of the above approach:
+
+Time Complexity: O(N logN)
+Auxiliary Space: O(N)
+
+=============================================================================
+Given N items where each item has some weight and profit associated with it and also given a bag with capacity W, [i.e., the bag can hold at most W weight in it]. The task is to put the items into the bag such that the sum of profits associated with them is the maximum possible.
+
+Note: The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
+
+Recursion Approach for 0/1 Knapsack Problem:
+To solve the problem follow the below idea:
+
+A simple solution is to consider all subsets of items and calculate the total weight and profit of all subsets. Consider the only subsets whose total weight is smaller than W. From all such subsets, pick the subset with maximum profit.
+
+Optimal Substructure: To consider all subsets of items, there can be two cases for every item.
+
+Case 1: The item is included in the optimal subset.
+Case 2: The item is not included in the optimal set.
+Follow the below steps to solve the problem:
+
+The maximum value obtained from ‘N’ items is the max of the following two values.
+
+Case 1 (include the Nth item): Value of the Nth item plus maximum value obtained by remaining N-1 items and remaining weight i.e. (W-weight of the Nth item).
+Case 2 (exclude the Nth item): Maximum value obtained by N-1 items and W weight.
+If the weight of the ‘Nth‘ item is greater than ‘W’, then the Nth item cannot be included and Case 2 is the only possibility.
+
+Time Complexity: O(2N)
+Auxiliary Space: O(N), Stack space required for recursion
+
+Dynamic Programming Approach for 0/1 Knapsack Problem
+Memoization Approach for 0/1 Knapsack Problem:
+Note: It should be noted that the above function using recursion computes the same subproblems again and again. See the following recursion tree, K(1, 1) is being evaluated twice.
+
+In the following recursion tree, K() refers to knapSack(). The two parameters indicated in the following recursion tree are n and W.
+The recursion tree is for following sample inputs.
+weight[] = {1, 1, 1}, W = 2, profit[] = {10, 20, 30}
+
+                                                     K(3, 2)
+                                          /                         \
+                                       /                             \
+                          K(2, 2)                                K(2, 1)
+                     /               \                           /               \
+                  /                   \                       /                   \
+          K(1, 2)               K(1, 1)            K(1, 1)       K(1, 0)
+           /     \                  /       \                /                  \
+        /         \              /           \            /                      \
+
+K(0, 2) K(0, 1) K(0, 1) K(0, 0) K(0, 1) K(0, 0)
+
+Recursion tree for Knapsack capacity 2 units and 3 items of 1 unit weight.
+
+As there are repetitions of the same subproblem again and again we can implement the following idea to solve the problem.
+
+If we get a subproblem the first time, we can solve this problem by creating a 2-D array that can store a particular state (n, w). Now if we come across the same state (n, w) again instead of calculating it in exponential complexity we can directly return its result stored in the table in constant time.
+
+0/1 Knapsack using Branch and Bound
+
+Branch and bound is an algorithm design paradigm which is generally used for solving combinatorial optimization problems. These problems typically exponential in terms of time complexity and may require exploring all possible permutations in worst case. Branch and Bound solve these problems relatively quickly.
+
+Let us consider below 0/1 Knapsack problem to understand Branch and Bound. Given two integer arrays val[0..n-1] and wt[0..n-1] that represent values and weights associated with n items respectively.
+
+Find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to Knapsack capacity W. Let us explore all approaches for this problem.
+
+Branch and BoundThe backtracking based solution works better than brute force by ignoring infeasible solutions. We can do better (than backtracking) if we know a bound on best possible solution subtree rooted with every node. If the best in subtree is worse than current best, we can simply ignore this node and its subtrees. So we compute bound (best solution) for every node and compare the bound with current best solution before exploring the node. Example bounds used in below diagram are, A down can give $315, B down can $275, C down can $225, D down can $125 and E down can $30. In the next article, we have discussed the process to get these bounds.
+
+Branch and bound is very useful technique for searching a solution but in worst case, we need to fully calculate the entire tree. At best, we only need to fully calculate one path through the tree and prune the rest of it.
+
+Pseudo code
+function knapsack(items, max_weight):
+best_value = 0
+queue = [{items: [], value: 0, weight: 0}]
+while queue is not empty:
+node = queue.pop()
+if node is a leaf node:
+update best_value if necessary
+else:
+for each remaining item:
+child = create child node for item
+if child is promising:
+queue.append(child)
+return best_value
+
+function is_promising(node, max_weight, best_value):
+if node.weight > max_weight:
+return False
+if node.value + bound(node.items) < best_value:
+return False
+return True
+
+function bound(items):
+
+# Calculate an upper bound on the value of the remaining items
+
+# using some heuristic (e.g., the fractional knapsack algorithm)
+
+=======================================================================
+
+What is N-Queen problem?
+
+The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
+
+For example, the following is a solution for the 4 Queen problem.
+
+The expected output is in the form of a matrix that has ‘Q‘s for the blocks where queens are placed and the empty spaces are represented by ‘.’ . For example, the following is the output matrix for the above 4-Queen solution.
+
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+
+N Queen Problem using Backtracking:
+The idea is to place queens one by one in different columns, starting from the leftmost column. When we place a queen in a column, we check for clashes with already placed queens. In the current column, if we find a row for which there is no clash, we mark this row and column as part of the solution. If we do not find such a row due to clashes, then we backtrack and return false.
+
+Below is the recursive tree of the above approach:
+
+Follow the steps mentioned below to implement the idea:
+
+Start in the leftmost column
+If all queens are placed return true
+Try all rows in the current column. Do the following for every row.
+If the queen can be placed safely in this row
+Then mark this [row, column] as part of the solution and recursively check if placing queen here leads to a solution.
+If placing the queen in [row, column] leads to a solution then return true.
+If placing queen doesn’t lead to a solution then unmark this [row, column] then backtrack and try other rows.
+If all rows have been tried and valid solution is not found return false to trigger backtracking.
+
+Time Complexity: O(N!)
+Auxiliary Space: O(N2)
