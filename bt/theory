@@ -62,3 +62,145 @@ Smart contracts provide utility to other contracts. For example, consider a smar
 They facilitate the implementation of ‘multi-signature’ accounts, in which the assets are transferred only when a certain percentage of people agree to do so
 Smart contracts can map legal obligations into an automated process.
 If smart contracts are implemented correctly, can provide a greater degree of contractual security.
+
+==========================================================================================
+
+These two Solidity contracts are examples of smart contracts that simulate a simple bank-like system on the Ethereum blockchain. Let's break down each of them:
+
+First Contract: Bank
+
+This contract is named "Bank" and manages accounts and balances for Ethereum addresses. It has the following functionalities:
+
+mapping(address=>uint) private balances: This is a private state variable that maps Ethereum addresses to their corresponding balances. It keeps track of the balance of each address.
+
+function getBalance() public view returns (uint): This is a public function that allows an address to query their account balance. It returns the balance associated with the sender's address.
+
+function deposit(uint amount) public payable: This function is used to deposit funds into the bank. It takes an amount as an argument and is marked as "payable" to accept Ether. It adds the deposited amount to the sender's balance.
+
+function withdraw(uint amount) public payable: This function allows an address to withdraw funds from their account. It checks if the requested amount is less than or equal to the sender's balance and, if so, deducts the amount and transfers it to the sender's address.
+
+Second Contract: SimpleBank
+
+This contract is also a basic bank-like system with some additional features:
+
+uint8 private clientCount: A private variable to keep track of the number of clients enrolled in the bank.
+
+mapping (address => uint) private balances: A private mapping to associate addresses with their balances.
+
+address public owner: A public variable to store the address of the contract owner.
+
+event LogDepositMade(address indexed accountAddress, uint amount): An event that logs when a deposit is made. It includes the account address and the deposit amount.
+
+constructor() public payable: The constructor initializes the contract, and it is marked as "payable" to accept an initial funding of 30 Ether when deploying the contract. The contract owner is set to the sender, and the client count is initialized to 0.
+
+function enroll() public returns (uint): This function allows customers to enroll in the bank. The first three clients receive a reward of 10 Ether. It checks if the client count is less than 3 and, if so, increases the count and sets their balance to 10 Ether.
+
+function deposit() public payable returns (uint): This function allows clients to deposit Ether into their accounts. It increases their balance and logs the deposit event.
+
+function withdraw(uint withdrawAmount) public returns (uint remainingBal): Clients can use this function to withdraw Ether from their accounts. It checks if the requested withdrawal amount is less than or equal to the client's balance, deducts the amount, and transfers it to the client's address.
+
+function balance() public view returns (uint): A read-only function that allows clients to check their account balance.
+
+function depositsBalance() public view returns (uint): This function returns the balance of the Simple Bank contract itself.
+
+These contracts demonstrate basic banking functionality on the Ethereum blockchain, allowing clients to enroll, deposit, withdraw, and check their balances. The second contract also has an initial funding requirement for deploying the contract and rewards the first three clients.
+
+====================================================================
+
+This Solidity code defines two contracts, `TestPayable` and `StudentRegister`, each with its own set of functions and functionality. Let's go through each of them:
+
+**Contract `TestPayable`**
+
+This contract is primarily used for testing the behavior of payable functions and fallback functions in Solidity. It has the following key components:
+
+1. `uint x;` and `uint y;`: Two state variables to store integers `x` and `y`.
+
+2. `fallback() external payable`: The fallback function is executed when the contract receives a message with non-empty `calldata`. It's marked as `payable` because it can receive Ether. This function sets the `x` variable to 1 and `y` to the value of Ether sent along with the message.
+
+3. `receive() external payable`: The receive function is executed when the contract receives plain Ether transfers (calls with empty `calldata`). This function sets the `x` variable to 2 and `y` to the value of Ether sent.
+
+**Contract `StudentRegister`**
+
+This contract represents a student registration system with the following features:
+
+1. `mapping(uint => Student) private students`: A mapping that associates student IDs with their corresponding `Student` structures. It's private, meaning only the contract can access it.
+
+2. `address public owner`: A public variable to store the address of the contract owner.
+
+3. `constructor() public payable`: The constructor initializes the contract and sets the contract's owner to the sender. It's also marked as `payable`, which means an initial funding can be sent when deploying the contract.
+
+4. `modifier onlyOwner`: A custom modifier that restricts access to certain functions to the owner of the contract.
+
+5. `struct Student`: A data structure representing a student, which includes fields for student ID, name, an array of marks, percentage, and a boolean flag to check if the student exists.
+
+6. `function register(uint studentId, string memory name, uint[] memory marks)`: This function allows the contract owner to register a new student. It checks if the student with the given ID already exists and verifies that there are exactly three marks provided. If not, it calculates the percentage and stores the student's data.
+
+7. `function getStudentDetails(uint studentId)`: This function allows anyone to retrieve student details given a student ID. It checks if the student exists and returns the relevant information.
+
+8. `function getArraySum(uint[] memory array)`: A private utility function to calculate the sum of an array of integers.
+
+9. `function callTestPayable(TestPayable test)`: This function is used to interact with the `TestPayable` contract. It demonstrates how to use low-level calls to the `TestPayable` contract's functions and send Ether to it, affecting the `x` and `y` variables in the `TestPayable` contract.
+
+In summary, the `TestPayable` contract is used for testing the behavior of payable functions and fallback functions, while the `StudentRegister` contract allows the owner to register and retrieve student information in a secure manner. It also includes a custom modifier for access control.
+
+===============================================================================================================================
+
+Contract in Solidity is similar to a Class in C++. A Contract have following properties.
+
+Constructor − A special function declared with constructor keyword which will be executed once per contract and is invoked when a contract is created.
+
+State Variables − Variables per Contract to store the state of the contract.
+
+Functions − Functions per Contract which can modify the state variables to alter the state of a contract.
+
+Visibility Quantifiers
+Following are various visibility quantifiers for functions/state variables of a contract.
+
+external − External functions are meant to be called by other contracts. They cannot be used for internal call. To call external function within contract this.function_name() call is required. State variables cannot be marked as external.
+
+public − Public functions/ Variables can be used both externally and internally. For public state variable, Solidity automatically creates a getter function.
+
+internal − Internal functions/ Variables can only be used internally or by derived contracts.
+
+private − Private functions/ Variables can only be used internally and not even by derived contracts.
+
+Value Types
+Solidity offers the programmer a rich assortment of built-in as well as user defined data types. Following table lists down seven basic C++ data types −
+
+Type	Keyword	Values
+Boolean	bool	true/false
+Integer	int/uint	Signed and unsigned integers of varying sizes.
+Integer	int8 to int256	Signed int from 8 bits to 256 bits. int256 is the same as int.
+Integer	uint8 to uint256	Unsigned int from 8 bits to 256 bits. uint256 is the same as uint.
+
+address
+address holds the 20 byte value representing the size of an Ethereum address. An address can be used to get the balance using .balance method and can be used to transfer balance to another address using .transfer method.
+
+Solidity supports three types of variables.
+
+State Variables − Variables whose values are permanently stored in a contract storage.
+
+Local Variables − Variables whose values are present till function is executing.
+
+Global Variables − Special variables exists in the global namespace used to get information about the blockchain.
+
+Solidity is a statically typed language, which means that the state or local variable type needs to be specified during declaration. Each declared variable always have a default value based on its type. There is no concept of "undefined" or "null".
+
+State Variable
+Variables whose values are permanently stored in a contract storage.
+
+pragma solidity ^0.5.0;
+contract SolidityTest {
+   uint storedData;      // State variable
+   constructor() public {
+      storedData = 10;   // Using State variable
+   }
+}
+
+Solidity supports String literal using both double quote (") and single quote ('). It provides string as a data type to declare a variable of type String.
+
+pragma solidity ^0.5.0;
+
+contract SolidityTest {
+   string data = "test";
+}

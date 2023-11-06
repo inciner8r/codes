@@ -1,0 +1,450 @@
+Data preprocessing is a process of preparing the raw data and making it suitable for a machine learning model. It is the first and crucial step while creating a machine learning model.
+
+When creating a machine learning project, it is not always a case that we come across the clean and formatted data. And while doing any operation with data, it is mandatory to clean it and put in a formatted way. So for this, we use data preprocessing task.
+
+Why do we need Data Preprocessing?
+A real-world data generally contains noises, missing values, and maybe in an unusable format which cannot be directly used for machine learning models. Data preprocessing is required tasks for cleaning the data and making it suitable for a machine learning model which also increases the accuracy and efficiency of a machine learning model.
+
+It involves below steps:
+
+Getting the dataset
+Importing libraries
+Importing datasets
+Finding Missing Data
+Encoding Categorical Data
+Splitting dataset into training and test set
+Feature scaling
+
+===============================================================================
+
+Have you ever trained a machine learning model on a real-world dataset? If yes, you’ll have likely come across outliers.
+
+Outliers are those data points that are significantly different from the rest of the dataset. They are often abnormal observations that skew the data distribution, and arise due to inconsistent data entry, or erroneous observations.
+
+To ensure that the trained model generalizes well to the valid range of test inputs, it’s important to detect and remove outliers.
+
+In this guide, we’ll explore some statistical techniques that are widely used for outlier detection and removal.
+
+Why Should You Detect Outliers?
+In the machine learning pipeline, data cleaning and preprocessing is an important step as it helps you better understand the data. During this step, you deal with missing values, detect outliers, and more.
+
+As outliers are very different values—abnormally low or abnormally high—their presence can often skew the results of statistical analyses on the dataset. This could lead to less effective and less useful models.
+
+But dealing with outliers often requires domain expertise, and none of the outlier detection techniques should be applied without understanding the data distribution and the use case.
+
+===============================================================================
+
+Correlation:
+Correlation explains how one or more variables are related to each other. These variables can be input data features which have been used to forecast our target variable.
+
+Correlation, statistical technique which determines how one variables moves/changes in relation with the other variable. It gives us the idea about the degree of the relationship of the two variables. It’s a bi-variate analysis measure which describes the association between different variables. In most of the business it’s useful to express one subject in terms of its relationship with others.
+
+Positive Correlation: Two features (variables) can be positively correlated with each other. It means that when the value of one variable increase then the value of the other variable(s) also increases.
+
+Negative Correlation: Two features (variables) can be negatively correlated with each other. It means that when the value of one variable increase then the value of the other variable(s) decreases.
+
+No Correlation: Two features (variables) are not correlated with each other. It means that when the value of one variable increase or decrease then the value of the other variable(s) doesn’t increase or decreases.
+
+===============================================================================
+
+Linear Regression
+Linear regression is a type of supervised machine learning algorithm that computes the linear relationship between a dependent variable and one or more independent features. When the number of the independent feature, is 1 then it is known as Univariate Linear regression, and in the case of more than one feature, it is known as multivariate linear regression. The goal of the algorithm is to find the best linear equation that can predict the value of the dependent variable based on the independent variables. The equation provides a straight line that represents the relationship between the dependent and independent variables. The slope of the line indicates how much the dependent variable changes for a unit change in the independent variable(s).
+
+Linear regression is used in many different fields, including finance, economics, and psychology, to understand and predict the behavior of a particular variable. For example, in finance, linear regression might be used to understand the relationship between a company’s stock price and its earnings or to predict the future value of a currency based on its past performance.
+
+One of the most important supervised learning tasks is regression. In regression set of records are present with X and Y values and these values are used to learn a function so if you want to predict Y from an unknown X this learned function can be used. In regression we have to find the value of Y, So, a function is required that predicts continuous Y in the case of regression given X as independent features.
+
+Here Y is called a dependent or target variable and X is called an independent variable also known as the predictor of Y. There are many types of functions or modules that can be used for regression. A linear function is the simplest type of function. Here, X may be a single feature or multiple features representing the problem.
+
+Linear regression performs the task to predict a dependent variable value (y) based on a given independent variable (x)). Hence, the name is Linear Regression. In the figure above, X (input) is the work experience and Y (output) is the salary of a person. The regression line is the best-fit line for our model.
+
+====================================================================================
+
+What is Random Forest Regression?
+Random Forest is an ensemble technique capable of performing both regression and classification tasks with the use of multiple decision trees and a technique called Bootstrap and Aggregation, commonly known as bagging. The basic idea behind this is to combine multiple decision trees in determining the final output rather than relying on individual decision trees.
+
+Random Forest has multiple decision trees as base learning models. We randomly perform row sampling and feature sampling from the dataset forming sample datasets for every model. This part is called Bootstrap.
+
+We need to approach the Random Forest regression technique like any other machine learning technique.
+
+Design a specific question or data and get the source to determine the required data.
+Make sure the data is in an accessible format else convert it to the required format.
+Specify all noticeable anomalies and missing data points that may be required to achieve the required data.
+Create a machine-learning model.
+Set the baseline model that you want to achieve
+Train the data machine learning model.
+Provide an insight into the model with test data
+Now compare the performance metrics of both the test data and the predicted data from the model.
+If it doesn’t satisfy your expectations, you can try improving your model accordingly or dating your data, or using another data modeling technique.
+At this stage, you interpret the data you have gained and report accordingly.
+
+Working of Random Forest Algorithm
+Before understanding the working of the random forest algorithm in machine learning, we must look into the ensemble learning technique. Ensemble simplymeans combining multiple models. Thus a collection of models is used to make predictions rather than an individual model.
+
+Ensemble uses two types of methods:
+
+Bagging
+It creates a different training subset from sample training data with replacement & the final output is based on majority voting. For example, Random Forest.
+
+Boosting
+It combines weak learners into strong learners by creating sequential models such that the final model has the highest accuracy. For example, ADA BOOST, XG BOOST.
+
+As mentioned earlier, Random forest works on the Bagging principle. Now let’s dive in and understand bagging in detail.
+
+Bagging
+Bagging, also known as Bootstrap Aggregation, serves as the ensemble technique in the Random Forest algorithm. Here are the steps involved in Bagging:
+
+Selection of Subset: Bagging starts by choosing a random sample, or subset, from the entire dataset.
+Bootstrap Sampling: Each model is then created from these samples, called Bootstrap Samples, which are taken from the original data with replacement. This process is known as row sampling.
+Bootstrapping: The step of row sampling with replacement is referred to as bootstrapping.
+Independent Model Training: Each model is trained independently on its corresponding Bootstrap Sample. This training process generates results for each model.
+Majority Voting: The final output is determined by combining the results of all models through majority voting. The most commonly predicted outcome among the models is selected.
+Aggregation: This step, which involves combining all the results and generating the final output based on majority voting, is known as aggregation.
+
+Steps Involved in Random Forest Algorithm
+Step 1: In the Random forest model, a subset of data points and a subset of features is selected for constructing each decision tree. Simply put, n random records and m features are taken from the data set having k number of records.
+Step 2: Individual decision trees are constructed for each sample.
+Step 3: Each decision tree will generate an output.
+Step 4: Final output is considered based on Majority Voting or Averaging for Classification and regression, respectively.
+For example
+
+Consider the fruit basket as the data as shown in the figure below. Now n number of samples are taken from the fruit basket, and an individual decision tree is constructed for each sample. Each decision tree will generate an output, as shown in the figure. The final output is considered based on majority voting. In the below figure, you can see that the majority decision tree gives output as an apple when compared to a banana, so the final output is taken as an apple.
+
+mportant Features of Random Forest
+Diversity: Not all attributes/variables/features are considered while making an individual tree; each tree is different.
+Immune to the curse of dimensionality: Since each tree does not consider all the features, the feature space is reduced.
+Parallelization: Each tree is created independently out of different data and attributes. This means we can fully use the CPU to build random forests.
+Train-Test split: In a random forest, we don’t have to segregate the data for train and test as there will always be 30% of the data which is not seen by the decision tree.
+Stability: Stability arises because the result is based on majority voting/ averaging.
+
+========================================================================================================
+
+What is K-Nearest Neighbors Algorithm?
+K-Nearest Neighbours is one of the most basic yet essential classification algorithms in Machine Learning. It belongs to the supervised learning domain and finds intense application in pattern recognition, data mining, and intrusion detection.
+
+It is widely disposable in real-life scenarios since it is non-parametric, meaning, it does not make any underlying assumptions about the distribution of data (as opposed to other algorithms such as GMM, which assume a Gaussian distribution of the given data). We are given some prior data (also called training data), which classifies coordinates into groups identified by an attribute.
+
+As an example, consider the following table of data points containing two features:
+
+Now, given another set of data points (also called testing data), allocate these points to a group by analyzing the training set. Note that the unclassified points are marked as ‘White’.
+
+Intuition Behind KNN Algorithm
+If we plot these points on a graph, we may be able to locate some clusters or groups. Now, given an unclassified point, we can assign it to a group by observing what group its nearest neighbors belong to. This means a point close to a cluster of points classified as ‘Red’ has a higher probability of getting classified as ‘Red’.
+
+Intuitively, we can see that the first point (2.5, 7) should be classified as ‘Green’ and the second point (5.5, 4.5) should be classified as ‘Red’.
+
+Distance Metrics Used in KNN Algorithm
+As we know that the KNN algorithm helps us identify the nearest points or the groups for a query point. But to determine the closest groups or the nearest points for a query point we need some metric. For this purpose, we use below distance metrics:
+
+Euclidean Distance
+Manhattan Distance
+Minkowski Distance
+Euclidean Distance
+This is nothing but the cartesian distance between the two points which are in the plane/hyperplane. Euclidean distance can also be visualized as the length of the straight line that joins the two points which are into consideration. This metric helps us calculate the net displacement done between the two states of an object.
+
+How to choose the value of k for KNN Algorithm?
+The value of k is very crucial in the KNN algorithm to define the number of neighbors in the algorithm. The value of k in the k-nearest neighbors (k-NN) algorithm should be chosen based on the input data. If the input data has more outliers or noise, a higher value of k would be better. It is recommended to choose an odd value for k to avoid ties in classification. Cross-validation methods can help in selecting the best k value for the given dataset.
+
+Applications of the KNN Algorithm
+Data Preprocessing – While dealing with any Machine Learning problem we first perform the EDA part in which if we find that the data contains missing values then there are multiple imputation methods are available as well. One of such method is KNN Imputer which is quite effective ad generally used for sophisticated imputation methodologies.
+Pattern Recognition – KNN algorithms work very well if you have trained a KNN algorithm using the MNIST dataset and then performed the evaluation process then you must have come across the fact that the accuracy is too high.
+Recommendation Engines – The main task which is performed by a KNN algorithm is to assign a new query point to a pre-existed group that has been created using a huge corpus of datasets. This is exactly what is required in the recommender systems to assign each user to a particular group and then provide them recommendations based on that group’s preferences.
+Advantages of the KNN Algorithm
+Easy to implement as the complexity of the algorithm is not that high.
+Adapts Easily – As per the working of the KNN algorithm it stores all the data in memory storage and hence whenever a new example or data point is added then the algorithm adjusts itself as per that new example and has its contribution to the future predictions as well.
+Few Hyperparameters – The only parameters which are required in the training of a KNN algorithm are the value of k and the choice of the distance metric which we would like to choose from our evaluation metric.
+Disadvantages of the KNN Algorithm
+Does not scale – As we have heard about this that the KNN algorithm is also considered a Lazy Algorithm. The main significance of this term is that this takes lots of computing power as well as data storage. This makes this algorithm both time-consuming and resource exhausting.
+Curse of Dimensionality – There is a term known as the peaking phenomenon according to this the KNN algorithm is affected by the curse of dimensionality which implies the algorithm faces a hard time classifying the data points properly when the dimensionality is too high.
+Prone to Overfitting – As the algorithm is affected due to the curse of dimensionality it is prone to the problem of overfitting as well. Hence generally feature selection as well as dimensionality reduction techniques are applied to deal with this problem.
+
+Time Complexity: O(N \* logN)
+Auxiliary Space: O(1)
+
+===================
+
+Support Vector Machine (SVM) is a powerful machine learning algorithm used for linear or nonlinear classification, regression, and even outlier detection tasks. SVMs can be used for a variety of tasks, such as text classification, image classification, spam detection, handwriting identification, gene expression analysis, face detection, and anomaly detection. SVMs are adaptable and efficient in a variety of applications because they can manage high-dimensional data and nonlinear relationships.
+
+SVM algorithms are very effective as we try to find the maximum separating hyperplane between the different classes available in the target feature.
+
+Support Vector Machine
+Support Vector Machine (SVM) is a supervised machine learning algorithm used for both classification and regression. Though we say regression problems as well it’s best suited for classification. The main objective of the SVM algorithm is to find the optimal hyperplane in an N-dimensional space that can separate the data points in different classes in the feature space. The hyperplane tries that the margin between the closest points of different classes should be as maximum as possible. The dimension of the hyperplane depends upon the number of features. If the number of input features is two, then the hyperplane is just a line. If the number of input features is three, then the hyperplane becomes a 2-D plane. It becomes difficult to imagine when the number of features exceeds three.
+
+Let’s consider two independent variables x1, x2, and one dependent variable which is either a blue circle or a red circle.
+
+From the figure above it’s very clear that there are multiple lines (our hyperplane here is a line because we are considering only two input features x1, x2) that segregate our data points or do a classification between red and blue circles. So how do we choose the best line or in general the best hyperplane that segregates our data points?
+
+How does SVM work?
+One reasonable choice as the best hyperplane is the one that represents the largest separation or margin between the two classes.
+
+So we choose the hyperplane whose distance from it to the nearest data point on each side is maximized. If such a hyperplane exists it is known as the maximum-margin hyperplane/hard margin. So from the above figure, we choose L2. Let’s consider a scenario like shown below
+
+Here we have one blue ball in the boundary of the red ball. So how does SVM classify the data? It’s simple! The blue ball in the boundary of red ones is an outlier of blue balls. The SVM algorithm has the characteristics to ignore the outlier and finds the best hyperplane that maximizes the margin. SVM is robust to outliers.
+
+So in this type of data point what SVM does is, finds the maximum margin as done with previous data sets along with that it adds a penalty each time a point crosses the margin. So the margins in these types of cases are called soft margins. When there is a soft margin to the data set, the SVM tries to minimize (1/margin+∧(∑penalty)). Hinge loss is a commonly used penalty. If no violations no hinge loss.If violations hinge loss proportional to the distance of violation.
+
+Till now, we were talking about linearly separable data(the group of blue balls and red balls are separable by a straight line/linear line). What to do if data are not linearly separable?
+
+Say, our data is shown in the figure above. SVM solves this by creating a new variable using a kernel. We call a point xi on the line and we create a new variable yi as a function of distance from origin o.so if we plot this we get something like as shown below
+
+In this case, the new variable y is created as a function of distance from the origin. A non-linear function that creates a new variable is referred to as a kernel.
+
+Support Vector Machine Terminology
+Hyperplane: Hyperplane is the decision boundary that is used to separate the data points of different classes in a feature space. In the case of linear classifications, it will be a linear equation i.e. wx+b = 0.
+Support Vectors: Support vectors are the closest data points to the hyperplane, which makes a critical role in deciding the hyperplane and margin.
+Margin: Margin is the distance between the support vector and hyperplane. The main objective of the support vector machine algorithm is to maximize the margin. The wider margin indicates better classification performance.
+Kernel: Kernel is the mathematical function, which is used in SVM to map the original input data points into high-dimensional feature spaces, so, that the hyperplane can be easily found out even if the data points are not linearly separable in the original input space. Some of the common kernel functions are linear, polynomial, radial basis function(RBF), and sigmoid.
+Hard Margin: The maximum-margin hyperplane or the hard margin hyperplane is a hyperplane that properly separates the data points of different categories without any misclassifications.
+Soft Margin: When the data is not perfectly separable or contains outliers, SVM permits a soft margin technique. Each data point has a slack variable introduced by the soft-margin SVM formulation, which softens the strict margin requirement and permits certain misclassifications or violations. It discovers a compromise between increasing the margin and reducing violations.
+C: Margin maximisation and misclassification fines are balanced by the regularisation parameter C in SVM. The penalty for going over the margin or misclassifying data items is decided by it. A stricter penalty is imposed with a greater value of C, which results in a smaller margin and perhaps fewer misclassifications.
+Hinge Loss: A typical loss function in SVMs is hinge loss. It punishes incorrect classifications or margin violations. The objective function in SVM is frequently formed by combining it with the regularisation term.
+Dual Problem: A dual Problem of the optimisation problem that requires locating the Lagrange multipliers related to the support vectors can be used to solve SVM. The dual formulation enables the use of kernel tricks and more effective computing.
+
+Types of Support Vector Machine
+Based on the nature of the decision boundary, Support Vector Machines (SVM) can be divided into two main parts:
+
+Linear SVM: Linear SVMs use a linear decision boundary to separate the data points of different classes. When the data can be precisely linearly separated, linear SVMs are very suitable. This means that a single straight line (in 2D) or a hyperplane (in higher dimensions) can entirely divide the data points into their respective classes. A hyperplane that maximizes the margin between the classes is the decision boundary.
+Non-Linear SVM: Non-Linear SVM can be used to classify data when it cannot be separated into two classes by a straight line (in the case of 2D). By using kernel functions, nonlinear SVMs can handle nonlinearly separable data. The original input data is transformed by these kernel functions into a higher-dimensional feature space, where the data points can be linearly separated. A linear SVM is used to locate a nonlinear decision boundary in this modified space.
+Popular kernel functions in SVM
+The SVM kernel is a function that takes low-dimensional input space and transforms it into higher-dimensional space, ie it converts nonseparable problems to separable problems. It is mostly useful in non-linear separation problems. Simply put the kernel, does some extremely complex data transformations and then finds out the process to separate the data based on the labels or outputs defined.
+
+Advantages of SVM
+Effective in high-dimensional cases.
+Its memory is efficient as it uses a subset of training points in the decision function called support vectors.
+Different kernel functions can be specified for the decision functions and its possible to specify custom kernels.
+
+=======================================================================================
+
+Neural networks are artificial systems that were inspired by biological neural networks. These systems learn to perform tasks by being exposed to various datasets and examples without any task-specific rules. The idea is that the system generates identifying characteristics from the data they have been passed without being programmed with a pre-programmed understanding of these datasets. Neural networks are based on computational models for threshold logic. Threshold logic is a combination of algorithms and mathematics. Neural networks are based either on the study of the brain or on the application of neural networks to artificial intelligence. The work has led to improvements in finite automata theory. Components of a typical neural network involve neurons, connections which are known as synapses, weights, biases, propagation function, and a learning rule. Neurons will receive an input p*j(t) from predecessor neurons that have an activation a_j(t) , threshold \theta_j , an activation function f, and an output function f*{out} . Connections consist of connections, weights and biases which rules how neuron $i$ transfers output to neuron $j$ . Propagation computes the input and outputs the output and sums the predecessor neurons function with the weight. The learning of neural network basically refers to the adjustment in the free parameters i.e. weights and bias. There are basically three sequence of events of learning process.
+
+These includes:
+
+The neural network is simulated by an new environment.
+Then the free parameters of the neural network is changed as a result of this simulation.
+The neural network then responds in a new way to the environment because of the changes in its free parameters.
+
+Elements of a Neural Network
+Input Layer: This layer accepts input features. It provides information from the outside world to the network, no computation is performed at this layer, nodes here just pass on the information(features) to the hidden layer.
+
+Hidden Layer: Nodes of this layer are not exposed to the outer world, they are part of the abstraction provided by any neural network. The hidden layer performs all sorts of computation on the features entered through the input layer and transfers the result to the output layer.
+
+Output Layer: This layer bring up the information learned by the network to the outer world.
+
+What is an activation function and why use them?
+The activation function decides whether a neuron should be activated or not by calculating the weighted sum and further adding bias to it. The purpose of the activation function is to introduce non-linearity into the output of a neuron.
+
+Explanation: We know, the neural network has neurons that work in correspondence with weight, bias, and their respective activation function. In a neural network, we would update the weights and biases of the neurons on the basis of the error at the output. This process is known as back-propagation. Activation functions make the back-propagation possible since the gradients are supplied along with the error to update the weights and biases.
+
+Why do we need Non-linear activation function?
+A neural network without an activation function is essentially just a linear regression model. The activation function does the non-linear transformation to the input making it capable to learn and perform more complex tasks.
+
+Elements of the diagram are as follows:
+
+Hidden layer i.e. layer 1:
+
+z(1) = W(1)X + b(1) a(1)
+
+Here,
+
+z(1) is the vectorized output of layer 1
+W(1) be the vectorized weights assigned to neurons of hidden layer i.e. w1, w2, w3 and w4
+X be the vectorized input features i.e. i1 and i2
+b is the vectorized bias assigned to neurons in hidden layer i.e. b1 and b2
+a(1) is the vectorized form of any linear function.
+(Note: We are not considering activation function here)
+
+Layer 2 i.e. output layer :-
+
+Note : Input for layer 2 is output from layer 1
+
+z(2) = W(2)a(1) + b(2)
+
+a(2) = z(2)
+
+Variants of Activation Function
+Linear Function
+Equation : Linear function has the equation similar to as of a straight line i.e. y = x
+No matter how many layers we have, if all are linear in nature, the final activation function of last layer is nothing but just a linear function of the input of first layer.
+Range : -inf to +inf
+Uses : Linear activation function is used at just one place i.e. output layer.
+Issues : If we will differentiate linear function to bring non-linearity, result will no more depend on input “x” and function will become constant, it won’t introduce any ground-breaking behavior to our algorithm.
+For example : Calculation of price of a house is a regression problem. House price may have any big/small value, so we can apply linear activation at output layer. Even in this case neural net must have any non-linear function at hidden layers.
+
+Sigmoid Function
+
+It is a function which is plotted as ‘S’ shaped graph.
+Equation : A = 1/(1 + e-x)
+Nature : Non-linear. Notice that X values lies between -2 to 2, Y values are very steep. This means, small changes in x would also bring about large changes in the value of Y.
+Value Range : 0 to 1
+Uses : Usually used in output layer of a binary classification, where result is either 0 or 1, as value for sigmoid function lies between 0 and 1 only so, result can be predicted easily to be 1 if value is greater than 0.5 and 0 otherwise.
+
+RELU Function
+
+It Stands for Rectified linear unit. It is the most widely used activation function. Chiefly implemented in hidden layers of Neural network.
+Equation :- A(x) = max(0,x). It gives an output x if x is positive and 0 otherwise.
+Value Range :- [0, inf)
+Nature :- non-linear, which means we can easily backpropagate the errors and have multiple layers of neurons being activated by the ReLU function.
+Uses :- ReLu is less computationally expensive than tanh and sigmoid because it involves simpler mathematical operations. At a time only a few neurons are activated making the network sparse making it efficient and easy for computation.
+In simple words, RELU learns much faster than sigmoid and Tanh function.
+
+================================================================================
+
+radient Descent in Machine Learning
+Gradient Descent is known as one of the most commonly used optimization algorithms to train machine learning models by means of minimizing errors between actual and expected results. Further, gradient descent is also used to train Neural Networks.
+
+In mathematical terminology, Optimization algorithm refers to the task of minimizing/maximizing an objective function f(x) parameterized by x. Similarly, in machine learning, optimization is the task of minimizing the cost function parameterized by the model's parameters. The main objective of gradient descent is to minimize the convex function using iteration of parameter updates. Once these machine learning models are optimized, these models can be used as powerful tools for Artificial Intelligence and various computer science applications.
+
+In this tutorial on Gradient Descent in Machine Learning, we will learn in detail about gradient descent, the role of cost functions specifically as a barometer within Machine Learning, types of gradient descents, learning rates, etc.
+
+What is Gradient Descent or Steepest Descent?
+Gradient descent was initially discovered by "Augustin-Louis Cauchy" in mid of 18th century. Gradient Descent is defined as one of the most commonly used iterative optimization algorithms of machine learning to train the machine learning and deep learning models. It helps in finding the local minimum of a function.
+
+The best way to define the local minimum or local maximum of a function using gradient descent is as follows:
+
+If we move towards a negative gradient or away from the gradient of the function at the current point, it will give the local minimum of that function.
+Whenever we move towards a positive gradient or towards the gradient of the function at the current point, we will get the local maximum of that function.
+
+This entire procedure is known as Gradient Ascent, which is also known as steepest descent. The main objective of using a gradient descent algorithm is to minimize the cost function using iteration. To achieve this goal, it performs two steps iteratively:
+
+Calculates the first-order derivative of the function to compute the gradient or slope of that function.
+Move away from the direction of the gradient, which means slope increased from the current point by alpha times, where Alpha is defined as Learning Rate. It is a tuning parameter in the optimization process which helps to decide the length of the steps.
+
+How does Gradient Descent work?
+Before starting the working principle of gradient descent, we should know some basic concepts to find out the slope of a line from linear regression. The equation for simple linear regression is given as:
+
+Y=mX+c  
+Where 'm' represents the slope of the line, and 'c' represents the intercepts on the y-axis.
+
+The starting point(shown in above fig.) is used to evaluate the performance as it is considered just as an arbitrary point. At this starting point, we will derive the first derivative or slope and then use a tangent line to calculate the steepness of this slope. Further, this slope will inform the updates to the parameters (weights and bias).
+
+The slope becomes steeper at the starting point or arbitrary point, but whenever new parameters are generated, then steepness gradually reduces, and at the lowest point, it approaches the lowest point, which is called a point of convergence.
+
+The main objective of gradient descent is to minimize the cost function or the error between expected and actual. To minimize the cost function, two data points are required:
+
+Direction & Learning Rate
+These two factors are used to determine the partial derivative calculation of future iteration and allow it to the point of convergence or local minimum or global minimum. Let's discuss learning rate factors in brief;
+
+============================================================================================================
+
+Confusion Matrix
+A confusion matrix is a matrix that summarizes the performance of a machine learning model on a set of test data. It is often used to measure the performance of classification models, which aim to predict a categorical label for each input instance. The matrix displays the number of true positives (TP), true negatives (TN), false positives (FP), and false negatives (FN) produced by the model on the test data.
+
+For binary classification, the matrix will be of a 2X2 table, For multi-class classification, the matrix shape will be equal to the number of classes i.e for n classes it will be nXn.
+
+A 2X2 Confusion matrix is shown below for the image recognization having a Dog image or Not Dog image.
+
+True Positive (TP): It is the total counts having both predicted and actual values are Dog.
+True Negative (TN): It is the total counts having both predicted and actual values are Not Dog.
+False Positive (FP): It is the total counts having prediction is Dog while actually Not Dog.
+False Negative (FN): It is the total counts having prediction is Not Dog while actually, it is Dog.
+
+Classification Accuracy: It is one of the important parameters to determine the
+accuracy of the classifi cation problems. It defi nes how often the model predicts
+the correct output. It can be calculated as the ratio of the number of correct
+predictions made by the classifi er to all number of predictions made by the
+classifi ers. The formula is given below:
+
+acc = tp + tn / tp + fp + tn + fn
+
+● Misclassification rate: It is also termed as Error rate, and it defi nes how often the
+model gives the wrong predictions. The value of error rate can be calculated as the
+number of incorrect predictions to all number of the predictions made by the
+classifi er. The formula is given below:
+
+err rate = fp + fn / all
+● Precision: It can be defi ned as the number of correct outputs provided by the model
+or out of all positive classes that have predicted correctly by the model, how many of
+them were actually true. It can be calculated using the below formula:
+
+precision = tp / (tp+ fp)
+● Recall: It is defi ned as the out of total positive classes, how our model predicted
+correctly. The recall must be as high as possible.
+
+recall = tp / (tp + fn)
+
+=================================================================================================
+
+K-Means Clustering Algorithm
+K-Means Clustering is an unsupervised learning algorithm that is used to solve the clustering problems in machine learning or data science. In this topic, we will learn what is K-means clustering algorithm, how the algorithm works, along with the Python implementation of k-means clustering.
+
+What is K-Means Algorithm?
+K-Means Clustering is an Unsupervised Learning algorithm, which groups the unlabeled dataset into different clusters. Here K defines the number of pre-defined clusters that need to be created in the process, as if K=2, there will be two clusters, and for K=3, there will be three clusters, and so on.
+
+It is an iterative algorithm that divides the unlabeled dataset into k different clusters in such a way that each dataset belongs only one group that has similar properties.
+It allows us to cluster the data into different groups and a convenient way to discover the categories of groups in the unlabeled dataset on its own without the need for any training.
+
+It is a centroid-based algorithm, where each cluster is associated with a centroid. The main aim of this algorithm is to minimize the sum of distances between the data point and their corresponding clusters.
+
+The algorithm takes the unlabeled dataset as input, divides the dataset into k-number of clusters, and repeats the process until it does not find the best clusters. The value of k should be predetermined in this algorithm.
+
+The k-means clustering algorithm mainly performs two tasks:
+
+Determines the best value for K center points or centroids by an iterative process.
+Assigns each data point to its closest k-center. Those data points which are near to the particular k-center, create a cluster.
+Hence each cluster has datapoints with some commonalities, and it is away from other clusters.
+
+The below diagram explains the working of the K-means Clustering Algorithm:
+
+How does the K-Means Algorithm Work?
+The working of the K-Means algorithm is explained in the below steps:
+
+Step-1: Select the number K to decide the number of clusters.
+
+Step-2: Select random K points or centroids. (It can be other from the input dataset).
+
+Step-3: Assign each data point to their closest centroid, which will form the predefined K clusters.
+
+Step-4: Calculate the variance and place a new centroid of each cluster.
+
+Step-5: Repeat the third steps, which means reassign each datapoint to the new closest centroid of each cluster.
+
+Step-6: If any reassignment occurs, then go to step-4 else go to FINISH.
+
+Step-7: The model is ready.
+
+The above algorithm in pseudocode is as follows:  
+Initialize k means with random values
+
+--> For a given number of iterations:
+
+    --> Iterate through items:
+
+        --> Find the mean closest to the item by calculating
+        the euclidean distance of the item with each of the means
+
+        --> Assign item to mean
+
+        --> Update mean by shifting it to the average of the items in that cluster
+
+How to choose the value of "K number of clusters" in K-means Clustering?
+The performance of the K-means clustering algorithm depends upon highly efficient clusters that it forms. But choosing the optimal number of clusters is a big task. There are some different ways to find the optimal number of clusters, but here we are discussing the most appropriate method to find the number of clusters or value of K. The method is given below:
+
+A recipe for k-means
+The recipe for
+k
+-means is quite straightforward.
+
+Decide how many clusters you want, i.e. choose k
+Randomly assign a centroid to each of the k clusters
+Calculate the distance of all observation to each of the k centroids
+Assign observations to the closest centroid
+Find the new location of the centroid by taking the mean of all the observations in each cluster
+Repeat steps 3-5 until the centroids do not change position
+
+Elbow Method
+The Elbow method is one of the most popular ways to find the optimal number of clusters. This method uses the concept of WCSS value. WCSS stands for Within Cluster Sum of Squares, which defines the total variations within a cluster. The formula to calculate the value of WCSS (for 3 clusters) is given below:
+
+WCSS= ∑Pi in Cluster1 distance(Pi C1)2 +∑Pi in Cluster2distance(Pi C2)2+∑Pi in CLuster3 distance(Pi C3)2
+In the above formula of WCSS,
+
+∑Pi in Cluster1 distance(Pi C1)2: It is the sum of the square of the distances between each data point and its centroid within a cluster1 and the same for the other two terms.
+
+To measure the distance between data points and centroid, we can use any method such as Euclidean distance or Manhattan distance.
+
+To find the optimal value of clusters, the elbow method follows the below steps:
+
+It executes the K-means clustering on a given dataset for different K values (ranges from 1-10).
+For each value of K, calculates the WCSS value.
+Plots a curve between calculated WCSS values and the number of clusters K.
+The sharp point of bend or a point of the plot looks like an arm, then that point is considered as the best value of K.
+Since the graph shows the sharp bend, which looks like an elbow, hence it is known as the elbow method. The graph for the elbow method looks like the below image:
