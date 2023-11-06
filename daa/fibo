@@ -1,87 +1,55 @@
-# Write a program to calculate Fibonacci numbers and find its step count
-# Author: Kedar Koshti (41435)
+import timeit
 
-# Function to calculate Fibonacci number using recursion
+
+def fibonacci(n):
+    """Non recursive fibonacci function"""
+    for i in range(2, n + 1):
+        fib_list[i] = fib_list[i - 1] + fib_list[i - 2]
+    return fib_list[n]
+
+
 def fibonacci_recursive(n):
-    if n <= 0:
+    """Recursive fibonacci function"""
+    if n == 0:
         return 0
-    elif n == 1:
+    if n == 1:
         return 1
-    else:
-        return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+    fib_recur_list[n] = fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+    return fib_recur_list[n]
 
-# Function to calculate Fibonacci number using iteration (dynamic programming)
-def fibonacci_iterative(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
 
-    fib = [0] * (n + 1)
-    fib[1] = 1
+N = 20
+RUNS = 1000
+print(f"Given N = {N}\n{RUNS} runs")
 
-    for i in range(2, n + 1):
-        fib[i] = fib[i - 1] + fib[i - 2]
+fib_list = [0] * (N + 1)
+fib_list[0] = 0
+fib_list[1] = 1
+print(
+    "Fibonacci non-recursive:",
+    fibonacci(N),
+    "\tTime:",
+    f'{timeit.timeit("fibonacci(N)", setup=f"from __main__ import fibonacci;N={N}", number=RUNS):5f}',
+    "O(n)\tSpace: O(1)",
+)
 
-    return fib[n]
+fib_recur_list = [0] * (N + 1)
+fib_recur_list[0] = 0
+fib_recur_list[1] = 1
+print(
+    "Fibonacci recursive:\t",
+    fibonacci_recursive(N),
+    "\tTime:",
+    f'{timeit.timeit("fibonacci_recursive(N)", setup=f"from __main__ import fibonacci_recursive;N={N}", number=RUNS,):5f}',
+    "O(2^n)\tSpace: O(n)",
+)
 
-# Function to count the number of steps needed to calculate a Fibonacci number using recursion
-def count_steps_recursive(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return 1 + count_steps_recursive(n - 1) + count_steps_recursive(n - 2)
 
-# Function to count the number of steps needed to calculate a Fibonacci number using iteration
-def count_steps_iterative(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
+"""
+OUTPUT:
 
-    steps = [0] * (n + 1)
-    steps[1] = 1
-
-    for i in range(2, n + 1):
-        steps[i] = 1 + steps[i - 1] + steps[i - 2]
-
-    return steps[n]
-
-# Input the desired Fibonacci number 'n'
-n = int(input("Enter the value of n: "))
-
-# Calculate and print the Fibonacci number using recursion
-fib_recursive = fibonacci_recursive(n)
-print(f"Fibonacci number (Recursive) for n = {n}: {fib_recursive}")
-
-# Calculate and print the number of steps needed using recursion
-steps_recursive = count_steps_recursive(n)
-print(f"Number of steps (Recursive) to calculate Fibonacci number for n = {n}: {steps_recursive}")
-
-# Calculate and print the Fibonacci number using iteration
-fib_iterative = fibonacci_iterative(n)
-print(f"Fibonacci number (Iterative) for n = {n}: {fib_iterative}")
-
-# Calculate and print the number of steps needed using iteration
-steps_iterative = count_steps_iterative(n)
-print(f"Number of steps (Iterative) to calculate Fibonacci number for n = {n}: {steps_iterative}")
-
-def generate_fibonacci_sequence(n):
-    if n <= 0:
-        return []
-
-    fibonacci_sequence = []
-    a, b = 0, 1
-
-    while a <= n:
-        fibonacci_sequence.append(a)
-        a, b = b, a + b
-
-    return fibonacci_sequence
-
-# Generate and print the list of Fibonacci numbers up to 'n'
-fib_sequence = generate_fibonacci_sequence(n)
-print(f"Fibonacci sequence up to {n}: {fib_sequence}")
-
+Given N = 20
+1000 runs
+Fibonacci non-recursive: 6765   Time: 0.001657 O(n)     Space: O(1)
+Fibonacci recursive:     6765   Time: 2.064246 O(2^n)   Space: O(n)
+"""
